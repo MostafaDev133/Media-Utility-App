@@ -4,7 +4,7 @@ A lightweight, hassle-free desktop application for quick image processing and vi
 
 ## Current & Planned Features
 * Image format conversions (PNG, JPG, etc.)
-* 16-bit to 8-bit color depth conversion
+* Multi depth-bit conversions options
 * Video transcoding (MOV to MP4)
 * Video frame extraction for animation references
 * Video to GIF generation
@@ -14,4 +14,5 @@ A lightweight, hassle-free desktop application for quick image processing and vi
 2. Double-click **`Setup.bat`** to automatically create the virtual environment and install dependencies.
 3. Double-click **`Run.bat`** to launch the user interface.
 
-## this app is still in progress (NOT WORKING YET).
+## features that is currently working
+1. bit depth conversions.
