@@ -1,4 +1,3 @@
 @echo off
-call venv\Scripts\activate
-python main.py
-pause
+call venv\Scripts\activate.bat
+python main.py || pause

@@ -152,10 +152,26 @@ def load_and_inspect_image(info_label, combo_box, convert_btn):
 
 
 def process_conversion(target_selection, info_label):
-    """Converts pixel array and exports back to disk."""
+    """Converts pixel array and prompts user for custom save location and filename."""
     global selected_image_path
     if not selected_image_path:
         return
+
+    # Extract original directory, name, and extension
+    folder, full_name = os.path.split(selected_image_path)
+    name, ext = os.path.splitext(full_name)
+
+    # 1 & 2. Open Save File Dialog (Fixes custom location, custom naming, and overwrite warnings)
+    save_path = filedialog.asksaveasfilename(
+        title="Save Converted Image As...",
+        initialdir=folder,
+        initialfile=f"{name}_converted{ext}",
+        filetypes=[("Image Files", f"*{ext}"), ("All Files", "*.*")],
+        defaultextension=ext
+    )
+
+    if not save_path:
+        return  # User closed/canceled the save popup
 
     target_mode_map = {
         "1-Bit (Monochrome / B&W)": "1",
@@ -169,18 +185,20 @@ def process_conversion(target_selection, info_label):
 
     try:
         with Image.open(selected_image_path) as img:
-            converted_img = img.convert(target_mode)
+            # 3. Handle 1-Bit conversion with hard thresholding (no optical gray dithering)
+            if target_mode == "1":
+                grayscale = img.convert("L")
+                converted_img = grayscale.point(lambda p: 255 if p > 128 else 0).convert("1")
+            else:
+                converted_img = img.convert(target_mode)
             
-            folder, full_name = os.path.split(selected_image_path)
-            name, ext = os.path.splitext(full_name)
-            output_path = os.path.join(folder, f"{name}_converted{ext}")
+            converted_img.save(save_path)
             
-            converted_img.save(output_path)
-            info_label.configure(text=f"Success! Exported to:\n{output_path}", text_color="#4ade80")
+            saved_filename = os.path.basename(save_path)
+            info_label.configure(text=f"Success! Saved as:\n{saved_filename}", text_color="#4ade80")
             
     except Exception as e:
         info_label.configure(text=f"Conversion Error: {e}", text_color="#ef4444")
-
 
 # --- UI LAYOUT: SIDEBAR --- #
 
