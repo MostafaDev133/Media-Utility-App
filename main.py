@@ -2,7 +2,7 @@ import customtkinter as ctk
 # --- CUSTOM MODULES --- #
 from tools.bit_depth import setup_bit_depth_workspace
 from tools.format_converter import setup_format_converter_workspace
-
+from tools.frame_extractor import setup_frame_extractor_workspace
 # --- DESIGN & COLOR PALETTE --- #
 ctk.set_appearance_mode("Dark")
 
@@ -89,7 +89,7 @@ video_sub_menu = ctk.CTkFrame(sub_menu_container, fg_color="transparent")
 btn_frames = ctk.CTkButton(
     video_sub_menu, text="> Extract Frames", fg_color="transparent", 
     hover_color=ACTIVE_COLOR, anchor="w", text_color="gray70",
-    command=lambda: show_placeholder_workspace("Frame Extractor", "Extract frame sequences from MP4/MOV videos.")
+    command=lambda: setup_frame_extractor_workspace(main_frame)
 )
 btn_frames.pack(fill="x", pady=2)
 
