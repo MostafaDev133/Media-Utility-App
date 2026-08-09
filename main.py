@@ -3,6 +3,7 @@ import customtkinter as ctk
 from tools.bit_depth import setup_bit_depth_workspace
 from tools.format_converter import setup_format_converter_workspace
 from tools.frame_extractor import setup_frame_extractor_workspace
+from tools.video_to_gif import setup_video_to_gif_workspace
 # --- DESIGN & COLOR PALETTE --- #
 ctk.set_appearance_mode("Dark")
 
@@ -96,7 +97,7 @@ btn_frames.pack(fill="x", pady=2)
 btn_gif = ctk.CTkButton(
     video_sub_menu, text="> Video to GIF", fg_color="transparent", 
     hover_color=ACTIVE_COLOR, anchor="w", text_color="gray70",
-    command=lambda: show_placeholder_workspace("GIF Generator", "Convert video clips into optimized GIFs.")
+    command=lambda: setup_video_to_gif_workspace(main_frame)
 )
 btn_gif.pack(fill="x", pady=2)
 
