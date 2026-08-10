@@ -6,7 +6,7 @@ import os
 ACCENT_COLOR = "#3b82f6"
 selected_video_path = None
 
-def setup_frame_extractor_workspace(parent_frame):
+def frame_extractor_area(parent_frame):
     global selected_video_path
     selected_video_path = None
 

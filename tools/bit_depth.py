@@ -6,7 +6,7 @@ import os
 ACCENT_COLOR = "#3b82f6"
 selected_image_paths = []  # Holds one or multiple image paths
 
-def setup_bit_depth_workspace(parent_frame):
+def bit_depth_area(parent_frame):
     global selected_image_paths
     selected_image_paths = []
 

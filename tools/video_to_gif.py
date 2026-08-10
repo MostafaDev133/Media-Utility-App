@@ -7,7 +7,7 @@ import os
 ACCENT_COLOR = "#3b82f6"
 selected_video_path = None
 
-def setup_video_to_gif_workspace(parent_frame):
+def video_to_gif_area(parent_frame):
     global selected_video_path
     selected_video_path = None
 

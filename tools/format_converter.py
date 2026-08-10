@@ -6,7 +6,7 @@ import os
 ACCENT_COLOR = "#3b82f6"
 selected_image_paths = []  # Changed to a list to hold multiple files
 
-def setup_format_converter_workspace(parent_frame):
+def format_converter_area(parent_frame):
     global selected_image_paths
     selected_image_paths = []
 
