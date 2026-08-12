@@ -4,7 +4,7 @@ from tools.bit_depth import bit_depth_area
 from tools.format_converter import format_converter_area
 from tools.frame_extractor import frame_extractor_area
 from tools.video_to_gif import video_to_gif_area
-
+from tools.frames_to_video import frames_to_video_area
 # --- DESIGN & COLOR PALETTE --- #
 ctk.set_appearance_mode("Dark"); BG_COLOR = "#18181b"
 SIDEBAR_COLOR = "#27272a"; ACTIVE_COLOR = "#3f3f46"
@@ -63,6 +63,12 @@ btn_img_format = ctk.CTkButton(
     anchor="w", text_color="gray70",command=lambda: format_converter_area(main_frame)  # USING MODULE
 )
 btn_img_format.pack(fill="x", pady=2)
+
+btn_frames_to_vid = ctk.CTkButton(
+    image_sub_menu, text="> Frames to Video", fg_color="transparent", hover_color=ACTIVE_COLOR, 
+    anchor="w", text_color="gray70", command=lambda: frames_to_video_area(main_frame)
+)
+btn_frames_to_vid.pack(fill="x", pady=2)
 
 # --- VIDEO SUB-MENU --- #
 video_sub_menu = ctk.CTkFrame(sub_menu_container, fg_color="transparent")
